@@ -11,13 +11,14 @@ export default function Carrito({ items = [], onEliminar }) {
   const [visible, setVisible] = useState(false);
   const [datosCliente, setDatosCliente] = useState({
     nombre: "",
+    email: "",
     telefono: "",
     direccion: "",
     referencia: "",
   });
 
   // Número de WhatsApp de tu negocio (Cambiar por el número real)
-  const WHATSAPP_NUMBER = "51946586906"; // Formato: código de país + número sin espacios
+  const WHATSAPP_NUMBER = "51999999999"; // Formato: código de país + número sin espacios
 
   const calcularTotal = () => {
     return items.reduce((total, item) => total + item.subtotal, 0);
@@ -25,8 +26,8 @@ export default function Carrito({ items = [], onEliminar }) {
 
   const imageBodyTemplate = (rowData) => {
     return (
-      <img
-        src={rowData.imagen}
+      <img 
+        src={rowData.imagen} 
         alt={rowData.nombre}
         className="carrito-producto-img"
       />
@@ -38,9 +39,7 @@ export default function Carrito({ items = [], onEliminar }) {
   };
 
   const subtotalBodyTemplate = (rowData) => {
-    return (
-      <span className="subtotal-text">S/ {rowData.subtotal.toFixed(2)}</span>
-    );
+    return <span className="subtotal-text">S/ {rowData.subtotal.toFixed(2)}</span>;
   };
 
   const accionesBodyTemplate = (rowData) => {
@@ -50,7 +49,7 @@ export default function Carrito({ items = [], onEliminar }) {
         className="p-button-rounded p-button-danger p-button-text"
         onClick={() => onEliminar(rowData.id)}
         tooltip="Eliminar"
-        tooltipOptions={{ position: "top" }}
+        tooltipOptions={{ position: 'top' }}
       />
     );
   };
@@ -61,7 +60,7 @@ export default function Carrito({ items = [], onEliminar }) {
   };
 
   const generarMensajeWhatsApp = () => {
-    let mensaje = `🌊 *PEDIDO ALTHUS* 🌊\n\n`;
+    let mensaje = `🌊 *PEDIDO ALTHUS - AGUA PURIFICADA* 🌊\n\n`;
     mensaje += `👤 *Datos del Cliente:*\n`;
     mensaje += `Nombre: ${datosCliente.nombre}\n`;
     mensaje += `Teléfono: ${datosCliente.telefono}\n`;
@@ -71,7 +70,7 @@ export default function Carrito({ items = [], onEliminar }) {
     }
     mensaje += `\n📦 *Productos:*\n`;
     mensaje += `━━━━━━━━━━━━━━━━━━━━\n`;
-
+    
     items.forEach((item, index) => {
       mensaje += `${index + 1}. ${item.nombre}\n`;
       mensaje += `   Cantidad: ${item.cantidad}\n`;
@@ -91,43 +90,39 @@ export default function Carrito({ items = [], onEliminar }) {
 
   const handleConfirmarPedido = () => {
     // Validar datos
-    if (
-      !datosCliente.nombre ||
-      !datosCliente.telefono ||
-      !datosCliente.direccion
-    ) {
+    if (!datosCliente.nombre || !datosCliente.telefono || !datosCliente.direccion) {
       alert("Por favor completa todos los campos obligatorios");
       return;
     }
 
     const mensajeWhatsApp = generarMensajeWhatsApp();
     const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeWhatsApp}`;
-
+    
     // Abrir WhatsApp en una nueva pestaña
-    window.open(urlWhatsApp, "_blank");
-
+    window.open(urlWhatsApp, '_blank');
+    
     // Cerrar el modal
     setVisible(false);
-
+    
     // Opcional: Limpiar el formulario
     setDatosCliente({
       nombre: "",
       telefono: "",
       direccion: "",
-      referencia: "",
+      referencia: ""
     });
   };
 
   const footerContent = (
-    <div className="dialog-footer p-3">
-      <Button
-        label="Cancelar"
-        icon="pi pi-times"
-        onClick={() => setVisible(false)}
+    <div className="dialog-footer">
+      <Button 
+        label="Cancelar" 
+        icon="pi pi-times" 
+        onClick={() => setVisible(false)} 
         className="p-button-text"
       />
-      <Button
-        label="Enviar por WhatsApp"
+      <Button 
+        label="Enviar por WhatsApp" 
         icon="pi pi-whatsapp"
         onClick={handleConfirmarPedido}
         className="btn-whatsapp"
@@ -159,31 +154,34 @@ export default function Carrito({ items = [], onEliminar }) {
 
         <div className="carrito-tabla">
           <DataTable value={items} responsiveLayout="scroll">
-            <Column
-              header="Producto"
+            <Column 
+              header="Producto" 
               body={imageBodyTemplate}
-              style={{ width: "100px" }}
+              style={{ width: '100px' }}
             />
-            <Column field="nombre" header="Nombre" />
-            <Column
-              field="cantidad"
+            <Column 
+              field="nombre" 
+              header="Nombre"
+            />
+            <Column 
+              field="cantidad" 
               header="Cantidad"
-              style={{ width: "100px", textAlign: "center" }}
+              style={{ width: '100px', textAlign: 'center' }}
             />
-            <Column
-              header="Precio"
+            <Column 
+              header="Precio" 
               body={precioBodyTemplate}
-              style={{ width: "120px" }}
+              style={{ width: '120px' }}
             />
-            <Column
-              header="Subtotal"
+            <Column 
+              header="Subtotal" 
               body={subtotalBodyTemplate}
-              style={{ width: "120px" }}
+              style={{ width: '120px' }}
             />
-            <Column
-              header="Acciones"
+            <Column 
+              header="Acciones" 
               body={accionesBodyTemplate}
-              style={{ width: "100px", textAlign: "center" }}
+              style={{ width: '100px', textAlign: 'center' }}
             />
           </DataTable>
         </div>
@@ -191,9 +189,7 @@ export default function Carrito({ items = [], onEliminar }) {
         <div className="carrito-resumen">
           <div className="resumen-item">
             <span className="resumen-label">Subtotal:</span>
-            <span className="resumen-valor">
-              S/ {calcularTotal().toFixed(2)}
-            </span>
+            <span className="resumen-valor">S/ {calcularTotal().toFixed(2)}</span>
           </div>
           <div className="resumen-item">
             <span className="resumen-label">Delivery:</span>
@@ -201,9 +197,7 @@ export default function Carrito({ items = [], onEliminar }) {
           </div>
           <div className="resumen-total">
             <span className="total-label">Total:</span>
-            <span className="total-valor">
-              S/ {(calcularTotal() + 5).toFixed(2)}
-            </span>
+            <span className="total-valor">S/ {(calcularTotal() + 5).toFixed(2)}</span>
           </div>
 
           <Button
@@ -215,23 +209,21 @@ export default function Carrito({ items = [], onEliminar }) {
         </div>
       </div>
 
-      <Dialog
-        header="Completa tus datos para el pedido"
-        visible={visible}
-        style={{ width: "600px", padding: "20px" }}
+      <Dialog 
+        header="Completa tus datos para el pedido" 
+        visible={visible} 
+        style={{ width: '600px' }}
         onHide={() => setVisible(false)}
         footer={footerContent}
         className="dialog-pedido"
       >
-        <div className="form-pedido p-5">
+        <div className="form-pedido">
           <div className="field">
             <label htmlFor="nombre">Nombre completo *</label>
-            <InputText
+            <InputText 
               id="nombre"
               value={datosCliente.nombre}
-              onChange={(e) =>
-                setDatosCliente({ ...datosCliente, nombre: e.target.value })
-              }
+              onChange={(e) => setDatosCliente({...datosCliente, nombre: e.target.value})}
               placeholder="Ingresa tu nombre completo"
               className="w-full"
             />
@@ -239,12 +231,10 @@ export default function Carrito({ items = [], onEliminar }) {
 
           <div className="field">
             <label htmlFor="telefono">Teléfono *</label>
-            <InputText
+            <InputText 
               id="telefono"
               value={datosCliente.telefono}
-              onChange={(e) =>
-                setDatosCliente({ ...datosCliente, telefono: e.target.value })
-              }
+              onChange={(e) => setDatosCliente({...datosCliente, telefono: e.target.value})}
               placeholder="Ej: 999 999 999"
               className="w-full"
             />
@@ -252,12 +242,10 @@ export default function Carrito({ items = [], onEliminar }) {
 
           <div className="field">
             <label htmlFor="direccion">Dirección de entrega *</label>
-            <InputTextarea
+            <InputTextarea 
               id="direccion"
               value={datosCliente.direccion}
-              onChange={(e) =>
-                setDatosCliente({ ...datosCliente, direccion: e.target.value })
-              }
+              onChange={(e) => setDatosCliente({...datosCliente, direccion: e.target.value})}
               placeholder="Ingresa tu dirección completa (calle, número, distrito)"
               rows={3}
               className="w-full"
@@ -266,12 +254,10 @@ export default function Carrito({ items = [], onEliminar }) {
 
           <div className="field">
             <label htmlFor="referencia">Referencia (opcional)</label>
-            <InputText
+            <InputText 
               id="referencia"
               value={datosCliente.referencia}
-              onChange={(e) =>
-                setDatosCliente({ ...datosCliente, referencia: e.target.value })
-              }
+              onChange={(e) => setDatosCliente({...datosCliente, referencia: e.target.value})}
               placeholder="Ej: Frente al parque, portón azul, 2do piso"
               className="w-full"
             />
@@ -282,9 +268,7 @@ export default function Carrito({ items = [], onEliminar }) {
             <div className="productos-resumen-list">
               {items.map((item, index) => (
                 <div key={index} className="producto-resumen-item">
-                  <span>
-                    {item.cantidad}x {item.nombre}
-                  </span>
+                  <span>{item.cantidad}x {item.nombre}</span>
                   <span>S/ {item.subtotal.toFixed(2)}</span>
                 </div>
               ))}
@@ -305,9 +289,7 @@ export default function Carrito({ items = [], onEliminar }) {
 
           <div className="whatsapp-info">
             <i className="pi pi-info-circle"></i>
-            <p>
-              Al confirmar, se abrirá WhatsApp con tu pedido listo para enviar
-            </p>
+            <p>Al confirmar, se abrirá WhatsApp con tu pedido listo para enviar</p>
           </div>
         </div>
       </Dialog>
