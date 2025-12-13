@@ -1,0 +1,367 @@
+.carrito-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #91D7E7;
+}
+
+.carrito-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #284469;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+}
+
+.carrito-header i {
+  font-size: 2rem;
+  color: #91D7E7;
+}
+
+.items-count {
+  background: linear-gradient(135deg, #284469 0%, #1a2d4a 100%);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.carrito-tabla {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(40, 68, 105, 0.1);
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.carrito-producto-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  padding: 5px;
+  background: linear-gradient(135deg, #284469 0%, #1a2d4a 100%);
+  border-radius: 10px;
+}
+
+.precio-text,
+.subtotal-text {
+  font-weight: 600;
+  color: #284469;
+  font-size: 1.1rem;
+}
+
+.carrito-resumen {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(40, 68, 105, 0.1);
+  max-width: 400px;
+  margin-left: auto;
+}
+
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.resumen-label {
+  font-size: 1rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.resumen-valor {
+  font-size: 1.1rem;
+  color: #284469;
+  font-weight: 600;
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-top: 10px;
+  border-top: 3px solid #91D7E7;
+}
+
+.total-label {
+  font-size: 1.3rem;
+  color: #284469;
+  font-weight: 700;
+}
+
+.total-valor {
+  font-size: 1.8rem;
+  color: #91D7E7;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(145, 215, 231, 0.3);
+}
+
+.btn-finalizar {
+  width: 100%;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #284469 0%, #1a2d4a 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(40, 68, 105, 0.3);
+}
+
+.btn-finalizar:hover {
+  background: linear-gradient(135deg, #91D7E7 0%, #6bc5d9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(145, 215, 231, 0.4);
+}
+
+.btn-finalizar:active {
+  transform: translateY(0);
+}
+
+/* Carrito Vacío */
+.carrito-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  min-height: 400px;
+}
+
+.carrito-vacio-icon {
+  font-size: 6rem;
+  color: #91D7E7;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.carrito-vacio h2 {
+  font-size: 2rem;
+  color: #284469;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.carrito-vacio p {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+/* Dialog */
+.dialog-pedido .p-dialog-header {
+  background: linear-gradient(135deg, #284469 0%, #1a2d4a 100%);
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+}
+
+.dialog-pedido .p-dialog-title {
+  font-weight: 700;
+}
+
+.form-pedido {
+  padding: 20px 0;
+}
+
+.form-pedido .field {
+  margin-bottom: 20px;
+}
+
+.form-pedido label {
+  display: block;
+  margin-bottom: 8px;
+  color: #284469;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-pedido .p-inputtext,
+.form-pedido .p-inputtextarea {
+  width: 100%;
+  border-color: #91D7E7;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.form-pedido .p-inputtext:focus,
+.form-pedido .p-inputtextarea:focus {
+  border-color: #284469;
+  box-shadow: 0 0 0 0.2rem rgba(40, 68, 105, 0.25);
+}
+
+.pedido-resumen-dialog {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.pedido-resumen-dialog h4 {
+  color: #284469;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.resumen-dialog-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+.resumen-dialog-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  border-top: 2px solid #91D7E7;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #284469;
+}
+
+.dialog-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.dialog-footer .p-button {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+.dialog-footer .p-button:not(.p-button-text) {
+  background: linear-gradient(135deg, #284469 0%, #1a2d4a 100%);
+  border: none;
+}
+
+.dialog-footer .p-button:not(.p-button-text):hover {
+  background: linear-gradient(135deg, #91D7E7 0%, #6bc5d9 100%);
+}
+
+/* Botón WhatsApp */
+.btn-whatsapp {
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+}
+
+.btn-whatsapp:hover {
+  background: #128C7E !important;
+  border-color: #128C7E !important;
+}
+
+.productos-resumen-list {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.producto-resumen-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.producto-resumen-item span:first-child {
+  font-weight: 500;
+}
+
+.producto-resumen-item span:last-child {
+  font-weight: 600;
+  color: #284469;
+}
+
+.whatsapp-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #e7f3ff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border-left: 4px solid #91D7E7;
+}
+
+.whatsapp-info i {
+  color: #91D7E7;
+  font-size: 1.2rem;
+}
+
+.whatsapp-info p {
+  margin: 0;
+  color: #284469;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carrito-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .carrito-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .carrito-resumen {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .carrito-vacio-icon {
+    font-size: 4rem;
+  }
+
+  .carrito-vacio h2 {
+    font-size: 1.5rem;
+  }
+
+  .dialog-pedido {
+    width: 95% !important;
+  }
+}
+
+/* Estilos para PrimeReact DataTable */
+.carrito-tabla .p-datatable-thead > tr > th {
+  background: linear-gradient(135deg, #284469 0%, #1a2d4a 100%);
+  color: white;
+  font-weight: 600;
+  padding: 15px;
+}
+
+.carrito-tabla .p-datatable-tbody > tr > td {
+  padding: 15px;
+  vertical-align: middle;
+}
+
+.carrito-tabla .p-datatable-tbody > tr:hover {
+  background: rgba(145, 215, 231, 0.1);
+}
